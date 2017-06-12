@@ -21,7 +21,7 @@ type BSONArray
     end
 
     BSONArray(data::Ptr{UInt8}, length::Integer, _ref_::Any) = begin
-        buffer = Array(UInt8, 128)
+        buffer = Array{UInt8}(128)
         ccall(
             (:bson_init_static, libbson),
             Bool, (Ptr{Void}, Ptr{UInt8}, UInt32),
