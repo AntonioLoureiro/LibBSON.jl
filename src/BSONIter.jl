@@ -227,7 +227,7 @@ function value(bsonIter::BSONIter)
         return BSONArray(data[1], length[1], bsonIter)
     elseif ty == BSON_TYPE_BINARY
         lengthPtr = Array{UInt32}(1)
-        dataPtr = Array{Ptr{UInt8}(1)
+        dataPtr = Array(Ptr{UInt8}, 1)
         ccall(
             (:bson_iter_binary, libbson),
             Ptr{Void}, (Ptr{UInt8}, Ptr{Void}, Ptr{UInt32}, Ptr{Ptr{UInt8}}),
