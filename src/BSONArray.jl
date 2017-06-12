@@ -114,7 +114,7 @@ function append(bsonArray::BSONArray, val::Date)
 end
 function append(bsonArray::BSONArray, val::BSONArray)
     keyCStr = string(length(bsonArray))
-    childBuffer = Array(UInt8, 128)
+    childBuffer = Array{UInt8}(128)
     ccall(
         (:bson_append_array_begin, libbson),
         Bool, (Ptr{Void}, Ptr{UInt8}, Cint, Ptr{Void}),
@@ -196,7 +196,7 @@ function append(bsonArray::BSONArray, val::Symbol)
 end
 function append(bsonArray::BSONArray, val::Associative)
     keyCStr = string(length(bsonArray))
-    childBuffer = Array(UInt8, 128)
+    childBuffer = Array{UInt8}(128)
     ccall(
         (:bson_append_document_begin, libbson),
         Bool, (Ptr{Void}, Ptr{UInt8}, Cint, Ptr{Void}),
@@ -218,7 +218,7 @@ function append(bsonArray::BSONArray, val::Associative)
 end
 function append(bsonArray::BSONArray, val::Vector)
     keyCStr = string(length(bsonArray))
-    childBuffer = Array(UInt8, 128)
+    childBuffer = Array{UInt8}(128)
     ccall(
         (:bson_append_array_begin, libbson),
         Bool, (Ptr{Void}, Ptr{UInt8}, Cint, Ptr{Void}),
