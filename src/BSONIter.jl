@@ -3,7 +3,7 @@ type BSONIter
     done::Bool
 
     function BSONIter(bsonObject::BSONObject)
-        bsonIter = new(Array{UInt8}(128)), false)
+        bsonIter = new(Array{UInt8}(128), false)
         ccall(
             (:bson_iter_init, libbson),
             Bool, (Ptr{UInt8}, Ptr{UInt8}),
