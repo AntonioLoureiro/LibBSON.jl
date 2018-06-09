@@ -1,6 +1,6 @@
 module LibBSON
 
-using Compat
+using Compat,Missings
 
 include( "../deps/deps.jl")
 
