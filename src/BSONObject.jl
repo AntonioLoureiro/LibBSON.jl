@@ -193,6 +193,11 @@ end
 function append(bsonObject::BSONObject, key::AbstractString, val::Void)
     append_null(bsonObject, key)
 end
+
+function append(bsonObject::BSONObject, key::AbstractString, val::Missing)
+    append_null(bsonObject, key)
+end
+
 function append(bsonObject::BSONObject, key::AbstractString, val::Symbol)
     if val == :null
         append_null(bsonObject, key)
